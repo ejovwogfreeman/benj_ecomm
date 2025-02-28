@@ -1,0 +1,15 @@
+.card img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.category-text {
+  background-color: #d1e7dd;
+  color: #366168;
+  padding: 2px !important;
+  border-radius: 3px;
+}
+
+a {
+  text-decoration: none;
+}
