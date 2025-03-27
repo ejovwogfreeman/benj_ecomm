@@ -48,8 +48,8 @@ if (mysqli_num_rows($cart_result) > 0) {
                                 WHERE cart_id = '$cart_id' AND product_id = '$product_id'";
         mysqli_query($conn, $update_quantity_sql);
         // redirect
-        $_SESSION['message'] = 'cart updated successfully';
-        header('Location: index.php');
+        // $_SESSION['message'] = 'cart updated successfully';
+        header('Location: cart.php');
     } else {
         // Product not in cart, insert it
         $cart_item_id = uniqid();

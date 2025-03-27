@@ -25,6 +25,14 @@ if (mysqli_num_rows($cart_result) > 0) {
     if (mysqli_num_rows($cart_item_result) > 0) {
         // Product already in cart, update quantity
         $cart_items = mysqli_fetch_all($cart_item_result, MYSQLI_ASSOC);
+
+        $price_array = [];
+
+        foreach ($cart_items as $product) {
+            array_push($price_array, $product['price_paid']);
+        }
+
+        $total_price = array_sum($price_array);
     }
 }
 
@@ -49,7 +57,7 @@ if (mysqli_num_rows($cart_result) > 0) {
                     <?php foreach ($cart_items as $product): ?>
                         <tr>
                             <td><?php echo $product['product_name'] ?></td>
-                            <td><?php echo $product['quantity'] ?></td>
+                            <td><a href="remove_from_cart.php?id=<?php echo $product['product_id'] ?>"><i class="bi bi-dash-square-fill text-primary me-2" style="font-size: 20px; cursor: pointer"></i></a><?php echo $product['quantity'] ?><a href="add_to_cart.php?id=<?php echo $product['product_id'] ?>"><i class="bi bi-plus-square-fill text-primary ms-2" style="font-size: 20px; cursor: pointer"></i></a></td>
                             <td><?php echo number_format($product['unit_price']) ?></td>
                             <td><?php echo number_format($product['price_paid']) ?></td>
                         </tr>
@@ -61,6 +69,10 @@ if (mysqli_num_rows($cart_result) > 0) {
                 <?php endif; ?>
             </tbody>
         </table>
+        <div class="p-3 bg-light d-flex align-items-center justify-content-between">
+            <a href="checkout.php" class="btn btn-primary">Proceed To Checkout</a>
+            <h3>Total: ₦<?php echo number_format($total_price) ?></h3>
+        </div>
     </div>
 </div>
 

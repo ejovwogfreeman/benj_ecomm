@@ -43,8 +43,8 @@ if (mysqli_num_rows($cart_result) > 0) {
         }
 
         // redirect
-        $_SESSION['message'] = 'cart updated successfully';
-        header('Location: index.php');
+        // $_SESSION['message'] = 'cart updated successfully';
+        header('Location: cart.php');
     } else {
         echo "Product not found in cart.";
     }
