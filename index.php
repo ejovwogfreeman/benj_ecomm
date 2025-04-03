@@ -29,7 +29,7 @@ $message = isset($_SESSION['message']) ? $_SESSION['message'] : null;
     <div class="row">
         <?php if (count($result) > 0): ?>
             <?php foreach ($result as $product): ?>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
                     <div class="card">
                         <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($product['product_image']) ?>" class="card-img-top" alt="...">
                         <div class="card-body">

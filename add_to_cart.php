@@ -21,7 +21,6 @@ $product = mysqli_fetch_assoc($product_query);
 $product_name = $product['product_name'];
 $product_price = $product['product_price'];
 
-// $user_id = '676c783d19098';
 $user_id = '676c783d10p98';
 
 // Check if an open cart exists for the user

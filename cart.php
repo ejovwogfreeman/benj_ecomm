@@ -69,10 +69,12 @@ if (mysqli_num_rows($cart_result) > 0) {
                 <?php endif; ?>
             </tbody>
         </table>
-        <div class="p-3 bg-light d-flex align-items-center justify-content-between">
-            <a href="checkout.php" class="btn btn-primary">Proceed To Checkout</a>
-            <h3>Total: ₦<?php echo number_format($total_price) ?></h3>
-        </div>
+        <?php if (!empty($cart_items)): ?>
+            <div class="p-3 bg-light d-flex align-items-center justify-content-between">
+                <a href="checkout.php" class="btn btn-primary">Proceed To Checkout</a>
+                <h3>Total: ₦<?php echo number_format($total_price) ?></h3>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 

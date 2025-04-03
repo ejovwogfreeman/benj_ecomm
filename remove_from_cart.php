@@ -9,7 +9,6 @@ if (!$product_id) {
     die("Invalid product ID.");
 }
 
-// $user_id = '676c783d19098';
 $user_id = '676c783d10p98';
 
 // Check if an open cart exists for the user

@@ -1,3 +1,24 @@
+<?php
+
+include('./config/db.php');
+
+$user_id = '676c783d10p98';
+
+// query to get total item from cart of the logged in user with a cart status of open
+
+$query = "SELECT SUM(ci.quantity) AS total_quantity FROM cart_items ci JOIN carts c ON ci.cart_id = c.cart_id WHERE c.user_id = '$user_id' AND c.status = 'open'";
+
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $total_quantity = $row['total_quantity'] ?? 0; // Default to 0 if NULL
+} else {
+    $total_quantity = 0; // Handle query failure
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +48,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cart.php">Cart</a>
+                        <a class="nav-link" href="cart.php">Cart (<?php echo  $total_quantity; ?>)</a>
                     </li>
                 </ul>
             </div>
